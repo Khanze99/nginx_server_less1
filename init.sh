@@ -1,4 +1,4 @@
-sudo unlink /etc/nginx/sites-enabled/default
-echo "UNLINK"
+sudo rm /etc/nginx/sites-enabled/default
+echo "REMOVE default config"
 sudo cp ./etc/server.conf /etc/nginx/sites-enabled/
 echo "COPY CONFIG"
