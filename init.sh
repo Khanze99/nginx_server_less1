@@ -4,4 +4,4 @@ sudo cp ./etc/server.conf /etc/nginx/sites-enabled/
 echo "COPY CONFIG"
 sudo service nginx reload
 echo "NGINX RELOADED"
-cd ask && gunicorn --bind=0.0.0.0:8000 ask.wsgi
+cd ask && gunicorn --bind=0.0.0.0:8000 --log-level=debug --workers=2 --timeout=15 ask.wsgi
