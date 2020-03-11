@@ -1,0 +1,4 @@
+{% for question in questions %}
+	<a href="{% url 'question_detail' pk=question.id %}"><p>{{ question.title }}</p></a>
+	<p>{{ question.rating }}</p>
+{% endfor %}
