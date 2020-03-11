@@ -11,7 +11,7 @@ def test(request, *args, **kwargs):
 
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
-    answers = question.answers.all()
+    answers = question.answer_set.all()
     return render(request, 'qa/question_detail.html', {'question': question, 'answers': answers})
     
 
