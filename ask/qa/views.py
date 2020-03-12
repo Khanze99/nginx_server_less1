@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 
 from .models import Question
+from .forms import AskForm, AnswerForm
 # Create your views here.
 
 def test(request, *args, **kwargs):
@@ -31,3 +32,14 @@ def popular_question_list(request):
     paginator = Paginator(objects, limit)
     questions = paginator.get_page(page_number)
     return render(request, 'qa/index.html', {'questions': questions})
+
+
+def post_ask(request):
+    if request.POST:
+        form = AskForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            question = question.id
+            return HttpResponseRedirect(f'/question/{question}/')
+    form = AskForm()
+    return render(request, 'qa/new_post.html', {'form': form})

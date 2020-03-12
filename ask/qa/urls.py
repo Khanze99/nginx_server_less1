@@ -6,7 +6,7 @@ urlpatterns = [
         path('login/', views.test,),
         path('signup/', views.test,),
         path('question/<int:pk>/', views.question_detail, name='question_detail'),
-        path('ask/', views.test,),
+        path('ask/', views.post_ask, name='new_ask'),
         path('popular/', views.popular_question_list, name='popular_question_list'),
         path('new/', views.test,)
         ]
