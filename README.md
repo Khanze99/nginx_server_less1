@@ -1,1 +1,1 @@
-# nginx_server_less1
+# Прохождение курса на stepik.ork от mail.group "Web-технологии"
