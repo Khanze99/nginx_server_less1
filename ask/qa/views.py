@@ -18,7 +18,7 @@ def question_detail(request, pk):
         answer_form = AnswerForm(request.POST)
         if answer_form.is_valid():
             answer_form.save()
-            return HttpResponseRedirect(f'/question/{pk}/')
+            return HttpResponseRedirect('/question/{pk}/'.format(pk=pk))
     return render(request, 'qa/question_detail.html', {'question': question, 'answers': answers, 'pk': pk, 'form': answer_form})
     
 
@@ -46,6 +46,6 @@ def post_ask(request):
         if form.is_valid():
             question = form.save()
             question = question.id
-            return HttpResponseRedirect(f'/question/{question}/')
+            return HttpResponseRedirect('/question/{question}/'.format(question=question))
     form = AskForm()
     return render(request, 'qa/new_post.html', {'form': form})
