@@ -13,10 +13,10 @@ def test(request, *args, **kwargs):
 def question_detail(request, pk):
     question = get_object_or_404(Question, pk=pk)
     answers = question.answer_set.all()
-    answer_form = AnswerForm()
+    answer_form = AnswerForm(initial={'question': question.id})
     if request.POST:
         answer_form = AnswerForm(request.POST)
-        if answer_form.is_valid:
+        if answer_form.is_valid():
             answer_form.save()
             return HttpResponseRedirect(f'/question/{pk}/')
     return render(request, 'qa/question_detail.html', {'question': question, 'answers': answers, 'pk': pk, 'form': answer_form})
