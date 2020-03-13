@@ -4,3 +4,9 @@
 <p> {{answer.text}} </p>
 <p> {{answer.added_at}} </p>
 {% endfor %}
+
+<form action="{% url 'question_detail' pk=pk %}" method="POST">
+	{{ form.as_p }}
+	{% csrf_token %}
+	<input type="submit" value="add answer">
+</form>
